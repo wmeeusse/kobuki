@@ -130,7 +130,7 @@ void Odometry::publishOdometry(const geometry_msgs::Quaternion &odom_quat,
   // by the imu, as the later takes much better measures
   odom->pose.covariance[0]  = 0.1;
   odom->pose.covariance[7]  = 0.1;
-  odom->pose.covariance[35] = 0.2;
+  odom->pose.covariance[35] = 1000000.0;  // the wheels slip like crazy (on concrete), set covariance accordingly
 
   odom->pose.covariance[14] = DBL_MAX; // set a very large covariance on unused
   odom->pose.covariance[21] = DBL_MAX; // dimensions (z, pitch and roll); this
